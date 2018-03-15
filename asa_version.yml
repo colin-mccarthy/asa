@@ -23,6 +23,6 @@
       authorize: yes
       commands:
         - show version
-    register: vty
+    register: version
 
-  - debug: var=vty.stdout_lines
+  - debug: var=version.stdout_lines
