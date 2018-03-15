@@ -1,0 +1,28 @@
+---
+
+
+[ios]
+
+192.168.161.15  ansible_ssh_host=192.168.161.15  ansible_network_os=ios
+
+[ios:vars]
+
+ansible_ssh_pass=cisco
+ansible_become_pass=cisco
+remote_user=pi
+
+[junos]
+192.168.161.20 ansible_ssh_host=192.168.161.20  ansible_network_os=junos
+
+[junos:vars]
+ansible_ssh_pass=Juniper
+remote_user=root
+
+[asa]
+192.168.161.55 ansible_ssh_host=192.168.161.55  ansible_network_os=ios
+
+[asa:vars]
+ansible_ssh_pass=cisco
+ansible_become_pass=cisco
+remote_user=colin
+

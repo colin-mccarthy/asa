@@ -1,0 +1,18 @@
+---
+
+- hosts: asa
+  remote_user: colin
+  become: yes
+  become_method: enable
+  connection: local
+  
+
+  tasks:
+  - name: SHOW VERSION
+    asa_command:
+      commands:
+        - show version
+    register: version
+ 
+  - debug: var=version.stdout_lines
+ 
