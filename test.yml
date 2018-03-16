@@ -1,0 +1,23 @@
+
+
+---
+
+- hosts: asa
+  remote_user: colin
+  become: yes
+  become_method: enable
+  connection: local
+
+
+  tasks:
+  - name: CONFIGURE SNMP
+    asa_config:
+      lines:
+        - snmp-server enable
+        - snmp-server community ansibull
+        - snmp-server host inside 192.168.161.25 community ansibull
+        - snmp-server contact colin@thenetwork.engineer
+        - snmp-server enable traps snmp linkup linkdown coldstart authentication
+        - snmp-server enable traps syslog
+        - snmp-server enable traps remote-access
+        - snmp-server location building 42
