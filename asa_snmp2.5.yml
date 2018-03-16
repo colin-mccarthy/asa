@@ -21,3 +21,4 @@
         - snmp-server enable traps syslog
         - snmp-server enable traps remote-access
         - snmp-server location building 42
+      save: yes
