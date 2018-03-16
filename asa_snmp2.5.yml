@@ -6,7 +6,7 @@
   remote_user: colin
   become: yes
   become_method: enable
-  connection: local
+  connection: network_cli
 
 
   tasks:
