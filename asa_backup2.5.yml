@@ -1,0 +1,15 @@
+
+
+---
+
+- hosts: asa
+  remote_user: colin
+  become: yes
+  become_method: enable
+  connection: network_cli
+
+
+  tasks:
+  - name: BACKUP RUNNING-CONFIG
+    asa_config:
+      backup: yes
