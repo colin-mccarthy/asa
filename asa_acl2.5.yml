@@ -1,0 +1,22 @@
+
+
+---
+
+- hosts: asa
+  remote_user: colin
+  become: yes
+  become_method: enable
+  connection: network_cli
+
+
+  tasks:
+  - name: MODIFY ACL-ANSIBLE
+    asa_acl:
+      lines:
+        - access-list ACL-ANSIBLE extended permit tcp any any eq 82
+        - access-list ACL-ANSIBLE extended permit tcp any any eq www
+        - access-list ACL-ANSIBLE extended permit tcp any any eq 97
+        - access-list ACL-ANSIBLE extended permit tcp any any eq 98
+        - access-list ACL-ANSIBLE extended permit tcp any any eq 99
+      match: strict
+      replace: block

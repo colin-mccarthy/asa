@@ -1,0 +1,31 @@
+
+
+---
+- hosts: asa
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: OBTAIN LOGIN CREDENTIALS
+    include_vars: secrets.yml
+
+  - name: DEFINE PROVIDER
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+        auth_pass: "{{ creds['auth_pass'] }}"
+
+  - name: MODIFY ACL-ANSIBLE
+    asa_acl:
+      provider: "{{ provider }}"
+      authorize: yes
+      lines:
+        - access-list ACL-ANSIBLE extended permit tcp any any eq 82
+        - access-list ACL-ANSIBLE extended permit tcp any any eq www
+        - access-list ACL-ANSIBLE extended permit tcp any any eq 97
+        - access-list ACL-ANSIBLE extended permit tcp any any eq 98
+        - access-list ACL-ANSIBLE extended permit tcp any any eq 99
+      match: strict
+      replace: block
