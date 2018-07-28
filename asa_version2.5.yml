@@ -9,7 +9,7 @@
   
 
   tasks:
-  - name: SHOW VERSION
+  - name: show version
     asa_command:
       commands:
         - show version
