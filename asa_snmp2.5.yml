@@ -9,7 +9,7 @@
 
 
   tasks:
-  - name: CONFIGURE SNMP
+  - name: configure snmp
     asa_config:
       lines:
         - snmp-server enable
