@@ -1,11 +1,11 @@
-
-
 ---
 
 - hosts: asa
   remote_user: colin
   become: yes
   become_method: enable
+  connection: local
+  gather_facts: false
 
 
 
