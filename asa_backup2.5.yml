@@ -10,6 +10,6 @@
 
 
   tasks:
-  - name: BACKUP RUNNING-CONFIG
+  - name: backup running-config
     asa_config:
       backup: yes
