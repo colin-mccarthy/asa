@@ -1,6 +1,6 @@
 ---
 
-- hosts: asa
+- hosts: all
   remote_user: colin
   become: yes
   become_method: enable
