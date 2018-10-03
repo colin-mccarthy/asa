@@ -1,0 +1,19 @@
+ ---
+- hosts: asa
+  gather_facts: no
+
+
+  tasks:
+    - name: "CREATE HOST AND GROUPS ON {{ ansible_ssh_host }}"
+      asa_config:
+        lines:
+          - network-object host {{ item }}
+        parents: object-group network {{ object_group }}
+      with_items: "{{ object_hosts }}"
+
+  vars:
+    object_hosts:
+      - 10.45.16.79
+      - 10.45.16.72
+
+    object_group: TEST 
