@@ -1,0 +1,31 @@
+---
+- name: ASA BOOT SYSTEM CHANGE
+  hosts: asa
+  gather_facts: no
+
+  vars:
+    asa_image: asa964-8-smp-k8.bin
+    asa_compliant_ver: asa964-smp-k8.bin
+    asa_old_ver: asa914-smp-k8.bin
+    asa_3rd_ver: asa933-smp-k8.bin
+
+  tasks:
+  - name: SET BOOT SYSTEM FLASH
+    asa_config:
+      lines:
+        - "no boot system disk0:/{{ asa_old_ver }}"
+        - "boot system disk0:/{{ asa_image }}"
+        - "boot system disk0:/{{ asa_old_ver }}"
+        - "boot system disk0:/{{ asa_3rd_ver }}"
+
+  - name: SHOW MD5 / VERIFY
+    asa_command:
+      commands:
+        - verify /md5 flash:/asa964-smp-k8.bin
+
+    register: results
+  - set_fact:
+      myvalue: "{{ results.stdout | regex_search('= (.*)') | first }}"
+
+  - debug:
+      var: myvalue 
