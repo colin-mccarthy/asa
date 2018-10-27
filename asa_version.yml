@@ -1,15 +1,12 @@
 ---
 
-- hosts: all
-  remote_user: colin
-  become: yes
-  become_method: enable
-  connection: local
+- hosts: asa
   gather_facts: false
+  connection: networ_cli
   
 
   tasks:
-  - name: show version
+  - name: SHOW VERSION
     asa_command:
       commands:
         - show version

@@ -2,6 +2,7 @@
 - name: ASA BOOT SYSTEM CHANGE
   hosts: asa
   gather_facts: no
+  connection: network_cli
 
   vars:
     asa_image: asa964-8-smp-k8.bin
@@ -22,8 +23,8 @@
     asa_command:
       commands:
         - verify /md5 flash:/asa964-smp-k8.bin
-
     register: results
+
   - set_fact:
       myvalue: "{{ results.stdout | regex_search('= (.*)') | first }}"
 

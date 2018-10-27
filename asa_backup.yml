@@ -1,0 +1,12 @@
+---
+
+- hosts: asa
+  gather_facts: false
+  connection: network_cli
+
+
+
+  tasks:
+  - name: BACKUP RUNNING CONFIG
+    asa_config:
+      backup: yes

@@ -1,16 +1,13 @@
 ---
 
 - hosts: asa
-  remote_user: colin
-  become: yes
-  become_method: enable
-  connection: local
   gather_facts: false
+  connection: network_cli
 
 
 
   tasks:
-  - name: modify acl-ansible
+  - name: MODIFY ACL WITH ANSIBLE
     asa_acl:
       lines:
         - access-list ACL-ANSIBLE extended permit tcp any any eq 82

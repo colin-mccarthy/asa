@@ -1,15 +1,12 @@
 ---
 
 - hosts: asa
-  remote_user: colin
-  become: yes
-  become_method: enable
-  connection: local
-
+  gather_facts: no
+  connection: network_cli
 
 
   tasks:
-  - name: configure snmp
+  - name: CONFIGURE SNMP WITH ANSIBLE
     asa_config:
       lines:
         - snmp-server enable
