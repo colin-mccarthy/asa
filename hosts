@@ -31,4 +31,6 @@ ansible_become_pass=cisco
 ansible_user=colin
 ansible_network_os=asa
 ansible_connection=network_cli
+ansible_become=yes
+ansible_become_method=enable
 
