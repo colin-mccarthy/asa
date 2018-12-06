@@ -2,7 +2,7 @@
 
 - hosts: asa
   gather_facts: false
-  connection: networ_cli
+  connection: network_cli
   
 
   tasks:
